@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    --background: 248 250 252;
+    --foreground: 15 23 42;
+    --card: 255 255 255;
+    --card-foreground: 15 23 42;
+    --border: 226 232 240;
+    --input: 241 245 249;
+    --primary: 220 38 38;
+    --primary-foreground: 255 255 255;
+    --secondary: 241 245 249;
+    --secondary-foreground: 71 85 105;
+    --muted: 248 250 252;
+    --muted-foreground: 100 116 139;
+    --accent: 15 23 42;
+    --destructive: 220 38 38;
+    --success: 22 163 74;
+    --warning: 217 119 6;
+    --ring: 220 38 38;
+    --radius: 0.75rem;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    font-size: 16px;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    max-width: 430px;
+    margin: 0 auto;
+    position: relative;
+  }
+}
+
+@layer utilities {
+  .font-tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .safe-tap-gradient {
+    background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);
+  }
+
+  .sos-pulse {
+    animation: sosPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes sosPulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+    }
+    50% {
+      box-shadow: 0 0 0 20px rgba(220, 38, 38, 0);
+    }
+  }
+
+  .recording-pulse {
+    animation: recordPulse 1s ease-in-out infinite;
+  }
+
+  @keyframes recordPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .slide-up {
+    animation: slideUp 0.3s ease-out forwards;
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .fade-in {
+    animation: fadeIn 0.25s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .chat-bubble-in {
+    animation: chatBubbleIn 0.2s ease-out forwards;
+  }
+
+  @keyframes chatBubbleIn {
+    from { transform: translateY(8px) scale(0.97); opacity: 0; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
+  }
+
+  .tab-active-indicator {
+    background: linear-gradient(90deg, #DC2626, #EF4444);
+  }
+
+  .emergency-banner {
+    background: linear-gradient(90deg, #7F1D1D, #DC2626);
+  }
+
+  .safe-phrase-glow {
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+
+/* Bottom tab bar safe area */
+.bottom-tab-bar {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
